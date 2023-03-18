@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 // Select all the needed data/elements
 const searchInput = document.getElementById('search-input')
 const searchBtn = document.querySelector('.search-icon', '.search-btn')
@@ -20,7 +20,8 @@ const weather = {
       'https://api.openweathermap.org/data/2.5/weather?q=' +
         city +
         '&appid=' +
-        this.apiKey
+        this.apiKey +
+        '&units=metric'
     )
       .then((response) => response.json())
       .then((data) => this.displayWeather(data))
@@ -30,7 +31,7 @@ const weather = {
     const newLocationName = data.name
     const newIcon = data.weather[0].icon
     const newWeatherCondition = data.weather[0].description
-    const newWeatherTemp = Math.round(data.main.temp - 273.15)
+    const newWeatherTemp = data.main.temp
     const newHumidiy = data.main.humidity
     const newWindSpeed = data.wind.speed
 
